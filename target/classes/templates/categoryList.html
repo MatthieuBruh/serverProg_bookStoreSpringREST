@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Book manager - book list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<div style="margin-bottom: 20px;">
+    <h1 style="font-weight: bold; display: inline; margin-right: 10px;">Categories</h1>
+    <a href="/booklist" style="text-decoration: none; color: gray;">
+        <h1 style="display: inline">-> Booklist</h1>
+    </a>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each = "category : ${categories}">
+        <td th:text="${category.id}" />
+        <td th:text="${category.name}" />
+        <td><a class="btn btn-warning" th:href="@{/editcategory(id=${category.id})}">Edit</a></td>
+        <td><a class="btn btn-danger" th:href="@{/deletecategory/{id}(id=${category.id})}">Delete</a></td>
+    </tr>
+</table>
+
+<a class="btn btn-success" href="/addcategory" >Add Category</a>
+</body>
+</html>

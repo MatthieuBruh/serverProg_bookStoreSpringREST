@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Book manager - book list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+<div style="margin-bottom: 20px;">
+    <h1 style="font-weight: bold; display: inline; margin-right: 10px;">Books</h1>
+    <a href="/categorylist" style="text-decoration: none; color: gray;">
+        <h1 style="display: inline;">-> Categorylist</h1>
+    </a>
+</div>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>ISBN</th>
+        <th>Year</th>
+        <th>Category</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each = "book : ${books}">
+        <td th:text="${book.author}" />
+        <td th:text="${book.title}" />
+        <td th:text="${book.isbn}" />
+        <td th:text="${book.releaseYear}" />
+        <td th:text="${book.category.name}" />
+        <td><a class="btn btn-warning" th:href="@{/edit(isbn=${book.isbn})}">Edit</a></td>
+        <td><a class="btn btn-danger" th:href="@{/delete/{isbn}(isbn=${book.isbn})}">Delete</a></td>
+    </tr>
+</table>
+
+<a class="btn btn-success" href="/add" >Add Book</a>
+</body>
+</html>

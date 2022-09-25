@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Book manager - add book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Edit a book</h1>
+<div>
+    <form th:object="${book}" th:action="@{save}" action="#" method="post">
+
+        <label for="isbn">ISBN</label>
+        <input type="text" id="isbn" th:field="*{isbn}" readonly/>
+        <br><br>
+
+        <label for="auth">Author</label>
+        <input type="text" id="auth" th:field="*{author}"/>
+        <br><br>
+
+        <label for="tlt">Title</label>
+        <input type="text" id="tlt" th:field="*{title}" required/>
+        <br><br>
+
+        <label for="year">Year</label>
+        <input type="number" id="year" th:field="*{releaseYear}" />
+        <br><br>
+
+        <label for="prc">Price</label>
+        <input type="number" id="prc" th:field="*{price}" />
+        <br><br>
+
+        <label for="catList">Category</label>
+        <select id="catList" th:field="*{category}">
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+        </select>
+
+        <input type="submit" value="Save" />
+    </form>
+</div>
+</body>
+</html>

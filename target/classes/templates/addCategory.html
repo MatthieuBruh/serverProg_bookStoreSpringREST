@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Book manager - add book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Add category</h1>
+<div>
+    <form th:object="${category}" th:action="@{savecategory}" action="#" method="post">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required/>
+        <br><br>
+
+        <input type="submit" value="Save" />
+    </form>
+</div>
+</body>
+</html>
